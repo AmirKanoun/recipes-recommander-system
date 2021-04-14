@@ -1,0 +1,10 @@
+name: rrs_env
+
+dependencies:
+  - python=3.8.2
+  - pip
+  - pandas
+  - scikit-learn
+  - click
+
+

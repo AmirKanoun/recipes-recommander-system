@@ -6,6 +6,12 @@ __pycache__/
 # C extensions
 *.so
 
+# exclude csv input data in data folder
+data/*
+
+# exception to data folder
+!data/.gitkeep
+
 # Distribution / packaging
 .Python
 build/
