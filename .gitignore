@@ -12,6 +12,9 @@ data/*
 # exception to data folder
 !data/.gitkeep
 
+# idea folder
+.idea/
+
 # Distribution / packaging
 .Python
 build/

@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from scipy.sparse import save_npz
 from sklearn.feature_extraction.text import TfidfVectorizer
-from utils import _concatenate_tags_of_item
+from utils import concatenate_tags_of_item
 
 # Home_DIR
 HOME_DIR = os.path.expanduser("~/.datasets/data/")
@@ -21,10 +21,10 @@ df_recipe_ingredient = pd.merge(df_ingredients, df_ingredients_ids,
 # Encode features
 df_recipe_ingredient['ingredient_id'] = df_recipe_ingredient.ingredient_id.astype(str)
 # GroupBy tags by item
-df_igredient_per_recipe = df_recipe_ingredient.groupby('recipe_id')['ingredient_id'].agg(_concatenate_tags_of_item)
-df_igredient_per_recipe.name = "recipe_ingredients"
-df_igredient_per_recipe = df_igredient_per_recipe.reset_index()
-df_data = pd.merge(df_recipes, df_igredient_per_recipe, how="right", on="recipe_id")  # merge to add recipe_name
+df_ingredient_per_recipe = df_recipe_ingredient.groupby('recipe_id')['ingredient_id'].agg(concatenate_tags_of_item)
+df_ingredient_per_recipe.name = "recipe_ingredients"
+df_ingredient_per_recipe = df_ingredient_per_recipe.reset_index()
+df_data = pd.merge(df_recipes, df_ingredient_per_recipe, how="right", on="recipe_id")  # merge to add recipe_name
 
 
 @click.command()
